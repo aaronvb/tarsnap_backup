@@ -12,8 +12,6 @@
     </array>
     <key>RunAtLoad</key>
 		<true/>
-    <key>KeepAlive</key>
-    <true/>
     <key>StandardOutPath</key>
     <string>/Users/aaronvb/.tarsnap/logs/launchd.log</string>
     <key>StandardErrorPath</key>
