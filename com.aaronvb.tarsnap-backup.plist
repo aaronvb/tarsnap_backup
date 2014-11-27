@@ -10,11 +10,46 @@
         <string>/Users/aaronvb/.rvm/rubies/ruby-2.1.5/bin/ruby</string>
         <string>/Users/aaronvb/.tarsnap/tasks/backup.rb</string>
     </array>
+    <key>RunAtLoad</key>
+		<true/>
+    <key>KeepAlive</key>
+    <true/>
     <key>StandardOutPath</key>
     <string>/Users/aaronvb/.tarsnap/logs/launchd.log</string>
     <key>StandardErrorPath</key>
     <string>/Users/aaronvb/.tarsnap/logs/launchd.log</string>
-    <key>StartInterval</key>
-    <integer>14400</integer>
+    <key>StartCalendarInterval</key>
+    <array>
+    	<dict>
+    		<key>Hour</key>
+    		<integer>0</integer>
+    		<key>Minute</key>
+    		<integer>0</integer>
+    	</dict>
+    	<dict>
+    		<key>Hour</key>
+    		<integer>8</integer>
+    		<key>Minute</key>
+    		<integer>0</integer>
+    	</dict>
+    	<dict>
+    		<key>Hour</key>
+    		<integer>12</integer>
+    		<key>Minute</key>
+    		<integer>0</integer>
+    	</dict>
+    	<dict>
+    		<key>Hour</key>
+    		<integer>16</integer>
+    		<key>Minute</key>
+    		<integer>0</integer>
+    	</dict>
+    	<dict>
+    		<key>Hour</key>
+    		<integer>20</integer>
+    		<key>Minute</key>
+    		<integer>0</integer>
+    	</dict>
+    </array>
 </dict>
 </plist>
