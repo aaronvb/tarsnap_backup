@@ -1,4 +1,5 @@
 require 'time'
+require 'pathname'
 
 class Tarsnap
   def initialize(options)
@@ -7,7 +8,8 @@ class Tarsnap
     @prune = options[:prune_backups] || 5
     @tarsnap = options[:where_tarsnap] || "/usr/local/bin/tarsnap"
     @log = options[:log_path] || "/tmp"
-    @log += "tarsnap_backup.log"
+    @log = Pathname.new(@log)
+    @log = @log.join("tarsnap_backup.log")
     @logger = Logger.new(@log)
   end
     
