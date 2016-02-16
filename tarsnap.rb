@@ -7,7 +7,7 @@ class Tarsnap
     @name_of_backup     = options[:backup_name]
 
     # config
-    @min_number_to_keep = options[:min_number_to_keep]  || 5
+    @number_to_keep     = options[:number_to_keep]      || 5
     @tarsnap            = options[:where_tarsnap]       || "/usr/local/bin/tarsnap"
     @options            = options[:options]             || ""
     @log_dir            = options[:log_path]            || "/tmp"
@@ -85,9 +85,9 @@ class Tarsnap
     archive_names = archives.collect {|x| x.split(".")[0]}
     matching_archives = archives.select {|x| x =~ /#{@name_of_backup}/}
     @logger.write("Found #{matching_archives.count} archives for #{@name_of_backup}")
-    if matching_archives.count > @min_number_to_keep
+    if matching_archives.count > @number_to_keep
       matching_archives.sort
-      amount_to_delete = matching_archives.count - @min_number_to_keep
+      amount_to_delete = matching_archives.count - @number_to_keep
       old_archives = matching_archives.slice(0, amount_to_delete)
       @logger.write("Going to delete #{amount_to_delete} archives: #{old_archives}")
       delete_archives(old_archives)

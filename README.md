@@ -3,7 +3,7 @@ tarsnap_backup
 
 Manage your tarsnap backups with this scripts.
 - configure your backups and start them automatically
-- delete backups older than x days
+- delete old backups if there are more than the specified max
 
 Have a look at the example.rb to see how to configure your backup folders (and other settings).
 
