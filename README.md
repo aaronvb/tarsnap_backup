@@ -1,48 +1,23 @@
 tarsnap_backup
 ==============
 
-Automated Tarsnap Backups in Ruby
+Manage your tarsnap backups with this scripts.
+- configure your backups and start them automatically
+- delete old backups if there are more than the specified max
 
-I created this script to manage my tarsnap backups. I included the launchd script to manage the execution of the backup on a 4 hour interval.
+Have a look at the example.rb to see how to configure your backup folders (and other settings).
 
-The launchd script goes in /Library/LaunchDaemons.
-
-```terminal
-$ launchctl load /Library/LaunchDaemons/com.aaronvb.tarsnap-backup.plist
-$ launchctl start com.aaronvb.tarsnap-backup
+To start the backup manually execute:
+```bash
+ruby example.rb
 ```
 
-Here's an example if you want setup more than one backup:
+You can use cron to trigger the script automatically:
+```bash
+crontab -e
+```
 
-```ruby
-#!/usr/bin/ruby
-
-require_relative 'tarsnap'
-
-# backups for project folder
-#
-settings = {
-  where_tarsnap: "/usr/local/bin/tarsnap",
-  log_path: "/Users/aaronvb/.tarsnap/logs",
-  to_backup: "/Users/aaronvb/projects",
-  backup_name: "projects",
-  prune_backups: 259200 # 3 days in seconds
-}
-
-tarsnap = Tarsnap.new(settings)
-tarsnap.backup
-
-# backups for document folder
-#
-
-settings = {
-  where_tarsnap: "/usr/local/bin/tarsnap",
-  log_path: "/Users/aaronvb/.tarsnap/logs",
-  to_backup: "/Users/aaronvb/Documents",
-  backup_name: "documents",
-  prune_backups: 259200 # 3 days in seconds
-}
-
-tarsnap = Tarsnap.new(settings)
-tarsnap.backup
+And add the following line to start a backup every day at 9 am:
+```
+0 09 * * * ruby path_to_script/example.rb
 ```
