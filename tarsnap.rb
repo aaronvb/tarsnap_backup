@@ -86,7 +86,7 @@ class Tarsnap
     matching_archives = archives.select {|x| x =~ /#{@name_of_backup}/}
     @logger.write("Found #{matching_archives.count} archives for #{@name_of_backup}")
     if matching_archives.count > @number_to_keep
-      matching_archives.sort
+      matching_archives = matching_archives.sort
       amount_to_delete = matching_archives.count - @number_to_keep
       old_archives = matching_archives.slice(0, amount_to_delete)
       @logger.write("Going to delete #{amount_to_delete} archives: #{old_archives}")
