@@ -46,3 +46,10 @@ settings = {
 tarsnap = Tarsnap.new(settings)
 tarsnap.backup
 ```
+
+# Bitbar Support
+<img src="http://aaronvb.com/images/bitbar_ss.png" height=200/>
+
+### To Install
+
+Add `tarsnap_bitbar.rb` to your Bitbar plugin folder.
